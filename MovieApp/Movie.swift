@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
 class Movie {
     private var _title: String
     private var _year: String
+    
+    static var _movieList = [[String:String]]()
     
     var title: String { return _title }
     var year: String { return _year }
@@ -20,5 +23,18 @@ class Movie {
         self._year = year
     }
     
-    
+    class func downloadMovieList(completed: @escaping () -> ()) {
+        DispatchQueue.global().async {
+            Alamofire.request("http://www.omdbapi.com/?s=wick").responseJSON { response in
+                if let result = response.result.value as? [String:Any] {
+                    if let list = result["Search"] as? [[String:String]] {
+                        Movie._movieList = list
+                    }
+                }
+                DispatchQueue.main.async {
+                    completed()
+                }
+            }
+        }
+    }
 }

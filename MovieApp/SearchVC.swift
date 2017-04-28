@@ -9,9 +9,12 @@
 import UIKit
 
 class SearchVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Movie.downloadMovieList {
+            print(Movie._movieList)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
