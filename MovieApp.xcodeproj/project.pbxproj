@@ -54,14 +54,46 @@
 		8CC34B111EB3CEE600C4A78B /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
-				8CC34B121EB3CEE600C4A78B /* AppDelegate.swift */,
-				8CC34B141EB3CEE600C4A78B /* ViewController.swift */,
-				8CC34B161EB3CEE600C4A78B /* Main.storyboard */,
+				8CC34B251EB3CEF600C4A78B /* Model */,
+				8CC34B241EB3CEED00C4A78B /* View */,
+				8CC34B261EB3CF0100C4A78B /* Controller */,
+				8CC34B271EB3CF1C00C4A78B /* Resources */,
 				8CC34B191EB3CEE600C4A78B /* Assets.xcassets */,
 				8CC34B1B1EB3CEE600C4A78B /* LaunchScreen.storyboard */,
 				8CC34B1E1EB3CEE600C4A78B /* Info.plist */,
 			);
 			path = MovieApp;
+			sourceTree = "<group>";
+		};
+		8CC34B241EB3CEED00C4A78B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8CC34B161EB3CEE600C4A78B /* Main.storyboard */,
+				8CC34B141EB3CEE600C4A78B /* ViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8CC34B251EB3CEF600C4A78B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8CC34B261EB3CF0100C4A78B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8CC34B121EB3CEE600C4A78B /* AppDelegate.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8CC34B271EB3CF1C00C4A78B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
