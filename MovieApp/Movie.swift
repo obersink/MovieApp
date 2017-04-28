@@ -12,15 +12,24 @@ import Alamofire
 class Movie {
     private var _title: String
     private var _year: String
+    private var _poster: String
     
-    static var _movieList = [[String:String]]()
+    private static var _movieList = [Movie]()
     
     var title: String { return _title }
     var year: String { return _year }
     
-    init(title: String, year: String) {
+    static var movieList: [Movie] { return _movieList }
+    static func append(_ movie: Movie){ _movieList.append(movie) }
+    
+    init(title: String, year: String, img: String) {
         self._title = title
         self._year = year
+        self._poster = img
+        
+        //let imgURL = NSURL(fileURLWithPath: img)
+        //let imgData = NSData(contentsOf: imgURL as URL)
+        //self._poster = UIImage(data: (imgData as? Data)!)!
     }
     
     class func downloadMovieList(completed: @escaping () -> ()) {
@@ -28,7 +37,13 @@ class Movie {
             Alamofire.request("http://www.omdbapi.com/?s=wick").responseJSON { response in
                 if let result = response.result.value as? [String:Any] {
                     if let list = result["Search"] as? [[String:String]] {
-                        Movie._movieList = list
+                        for obj in list {
+                            let title = obj["Title"]!
+                            let year = obj["Year"]!
+                            let poster = obj["Poster"]!
+                            let movie = Movie(title: title, year: year, img: poster)
+                            Movie.append(movie)
+                        }
                     }
                 }
                 DispatchQueue.main.async {

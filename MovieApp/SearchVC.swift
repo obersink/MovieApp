@@ -10,14 +10,31 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    @IBOutlet weak var movieTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Movie.downloadMovieList {
-            print(Movie._movieList)
+            self.movieTableView.reloadData()
         }
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    
 }
 
+extension SearchVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Movie.movieList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell {
+            let movie = Movie.movieList[indexPath.row]
+            cell.configureCell(movie)
+            return cell
+        }
+        else {
+            return UITableViewCell()
+        }
+    }
+    
+}

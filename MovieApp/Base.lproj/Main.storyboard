@@ -37,7 +37,7 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="100" id="g9g-JA-y0E">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="100" id="g9g-JA-y0E" customClass="MovieCell" customModule="MovieApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g9g-JA-y0E" id="vzi-IH-Ol8">
@@ -67,8 +67,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="moviePoster" destination="VzV-Mt-dNc" id="vzX-v8-oa0"/>
+                                            <outlet property="movieTitle" destination="Ie6-36-1R4" id="PZi-5A-vaA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cLN-Fa-KoE"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rSL-jj-OuW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,6 +93,9 @@
                             <constraint firstAttribute="trailing" secondItem="3qo-dK-YBs" secondAttribute="trailing" id="xcB-jw-Imp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieTableView" destination="zTS-k7-IJX" id="PpM-N5-ZEh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
