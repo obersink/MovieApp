@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="64" id="QZy-KK-okh"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="uZF-HR-0h5">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Movies" translatesAutoresizingMaskIntoConstraints="NO" id="uZF-HR-0h5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>

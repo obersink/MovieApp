@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 class Movie {
     
@@ -19,7 +20,7 @@ class Movie {
 //MARK: Getters
     var title: String { return _title }
     var year: String { return _year }
-    var poster: UIImageView { return _poster == nil ? UIImageView() : _poster! }
+    var poster: UIImageView { return _poster! }
     
 //MARK: Movies array and functions
     private static var _movieList = [Movie]()
@@ -31,27 +32,24 @@ class Movie {
         self._title = title
         self._year = year
         //self._poster = poster
-        
-                //self._poster = UIImage(data: (imgData as? Data)!)!
+        //self._poster = UIImage(data: (imgData as? Data)!)!
     }
     
+    //currently unused
     func downloadMovieDetails(imdbID: String, completed: @escaping () -> ()) {
         Alamofire.request("http://www.omdbapi.com/?i=\(imdbID)").responseJSON { response in
             if let result = response.result.value as? [String:Any] {
         
-                let title = result["Title"] as! String
-                let year = result["Year"] as! String
-                let poster = result["Poster"] as! String
-                let movie = Movie(title: title, year: year)
-    
+                //let title = result["Title"] as! String
+                //let year = result["Year"] as! String
+                //let poster = result["Poster"] as! String
+                //let movie = Movie(title: title, year: year)
             }
             DispatchQueue.main.async {
                 completed()
             }
         }
     }
-    
-
     
     class func downloadMovieList(searchKey: String, completed: @escaping () -> ()) {
         
@@ -67,27 +65,17 @@ class Movie {
                             let year = obj["Year"]!
                             let posterURL = obj["Poster"]!
                             
+                            let poster = UIImageView()
+                            let imgURL = URL(string: posterURL)!
+                            do {
+                                let data = try Data.init(contentsOf: imgURL)
+                                poster.image = UIImage(data: data)
+                            }
+                            catch{}
                             
-
                             let movie = Movie(title: title, year: year)
                             movie._imdbID = id
-                            
-                            
-//                            let imgURL = URL(fileURLWithPath: posterURL)
-//                            do{
-//                                let imgData = try Data(contentsOf: imgURL)
-//                                movie._poster = UIImage(data: imgData)
-//                            }
-//                            catch {}
-                            let url = URL(string: posterURL)
-                            
-                            DispatchQueue.global().async {
-                                let data = try? Data(contentsOf: url!)
-                                DispatchQueue.main.async {
-                                    movie._poster?.image = UIImage(data: data!)
-                                }
-                            }
-                            
+                            movie._poster = poster
                             
                             movies.append(movie)
                             self._movieList = movies

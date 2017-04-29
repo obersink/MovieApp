@@ -18,7 +18,6 @@ class SearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,35 +36,24 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchBar.text == nil || searchBar.text == "" {
-//            Movie.clearMovieList()
-//            movieTableView.reloadData()
-//        }
-        
-        let sessionManager = Alamofire.SessionManager.default
-        sessionManager.session.getTasksWithCompletionHandler { (dataTasks, uploadTasks, downloadTasks) in
-            dataTasks.forEach{ $0.cancel() }
-            uploadTasks.forEach{ $0.cancel() }
-            downloadTasks.forEach{ $0.cancel() }
+        if searchBar.text == nil || searchBar.text == "" {
+            Movie.clearMovieList()
+            self.movieTableView.reloadData()
         }
-        
-        
-            Movie.downloadMovieList(searchKey: searchBar.text!) {
-                self.movieTableView.reloadData()
-                
-                if searchBar.text == nil || searchBar.text == "" {
-                    Movie.clearMovieList()
-                    self.movieTableView.reloadData()
-                }
-
-            }
-        
+//        Movie.downloadMovieList(searchKey: searchBar.text!) {
+//            if searchBar.text == nil || searchBar.text == "" {
+//                Movie.clearMovieList()
+//                self.movieTableView.reloadData()
+//            }
+//            
+//            self.movieTableView.reloadData()
+//        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        Movie.downloadMovieList(searchKey: searchBar.text!) {
-//            self.movieTableView.reloadData()
-//        }
+        Movie.downloadMovieList(searchKey: searchBar.text!) {
+            self.movieTableView.reloadData()
+        }
     }
 }
 
