@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,6 +33,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="uZF-HR-0h5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="joA-1M-Re0"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zTS-k7-IJX">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
@@ -95,11 +99,76 @@
                     </view>
                     <connections>
                         <outlet property="movieTableView" destination="zTS-k7-IJX" id="PpM-N5-ZEh"/>
+                        <outlet property="searchBar" destination="uZF-HR-0h5" id="Gmi-jp-WmV"/>
+                        <segue destination="5gP-C9-lYV" kind="show" identifier="SegueToMovieDetailVC" id="qrp-1a-nBp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Movie DetailVC-->
+        <scene sceneID="TtU-mp-Yel">
+            <objects>
+                <viewController id="5gP-C9-lYV" customClass="MovieDetailVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m4e-Fz-Spb"/>
+                        <viewControllerLayoutGuide type="bottom" id="5aM-K2-zxD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fsa-3d-rmT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1k-Z1-Cml">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBx-RT-mOR">
+                                        <rect key="frame" x="8" y="33" width="30" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="M9C-Lg-QEv"/>
+                                            <constraint firstAttribute="width" constant="30" id="siA-IK-78K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="5gP-C9-lYV" eventType="touchUpInside" id="8ub-IG-lgi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DBx-RT-mOR" secondAttribute="bottom" constant="8" id="YrL-UJ-3PC"/>
+                                    <constraint firstAttribute="height" constant="64" id="dLg-Tb-zLV"/>
+                                    <constraint firstItem="DBx-RT-mOR" firstAttribute="leading" secondItem="F1k-Z1-Cml" secondAttribute="leading" constant="8" id="vXo-LQ-jcI"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTa-YA-vqR">
+                                <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="dTa-YA-vqR" secondAttribute="trailing" id="Alc-YZ-lms"/>
+                            <constraint firstItem="dTa-YA-vqR" firstAttribute="centerY" secondItem="fsa-3d-rmT" secondAttribute="centerY" id="QRr-4w-UQ8"/>
+                            <constraint firstItem="dTa-YA-vqR" firstAttribute="leading" secondItem="fsa-3d-rmT" secondAttribute="leadingMargin" id="b5G-kG-jLA"/>
+                            <constraint firstAttribute="trailing" secondItem="F1k-Z1-Cml" secondAttribute="trailing" id="fi8-rV-Pcw"/>
+                            <constraint firstItem="F1k-Z1-Cml" firstAttribute="top" secondItem="fsa-3d-rmT" secondAttribute="top" id="ulc-QO-xJi"/>
+                            <constraint firstItem="dTa-YA-vqR" firstAttribute="centerX" secondItem="fsa-3d-rmT" secondAttribute="centerX" id="vj4-so-cV4"/>
+                            <constraint firstItem="F1k-Z1-Cml" firstAttribute="leading" secondItem="fsa-3d-rmT" secondAttribute="leading" id="zdk-Bd-o7F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="dTa-YA-vqR" id="Gdm-3l-d5Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jU-D9-mEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072.8" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

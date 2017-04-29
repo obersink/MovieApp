@@ -14,6 +14,7 @@
 		8CC34B1D1EB3CEE600C4A78B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CC34B1B1EB3CEE600C4A78B /* LaunchScreen.storyboard */; };
 		8CC34B291EB3D8D600C4A78B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC34B281EB3D8D600C4A78B /* MovieCell.swift */; };
 		8CC34B2B1EB3D93800C4A78B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC34B2A1EB3D93800C4A78B /* Movie.swift */; };
+		8CC34B2D1EB3F38400C4A78B /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC34B2C1EB3F38400C4A78B /* MovieDetailVC.swift */; };
 		CD03764BB8839F2521088832 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ECAFE15732E9BD5D727BA1 /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		8CC34B1E1EB3CEE600C4A78B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CC34B281EB3D8D600C4A78B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		8CC34B2A1EB3D93800C4A78B /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		8CC34B2C1EB3F38400C4A78B /* MovieDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
 		DB31B5E2117A951D817A6E46 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 			children = (
 				8CC34B121EB3CEE600C4A78B /* AppDelegate.swift */,
 				8CC34B141EB3CEE600C4A78B /* SearchVC.swift */,
+				8CC34B2C1EB3F38400C4A78B /* MovieDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CC34B291EB3D8D600C4A78B /* MovieCell.swift in Sources */,
+				8CC34B2D1EB3F38400C4A78B /* MovieDetailVC.swift in Sources */,
 				8CC34B151EB3CEE600C4A78B /* SearchVC.swift in Sources */,
 				8CC34B2B1EB3D93800C4A78B /* Movie.swift in Sources */,
 				8CC34B131EB3CEE600C4A78B /* AppDelegate.swift in Sources */,

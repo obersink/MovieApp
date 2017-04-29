@@ -19,5 +19,6 @@ class MovieCell: UITableViewCell {
 
     func configureCell(_ movie: Movie) {
         self.movieTitle.text = "\(movie.title) (\(movie.year))"
+        self.moviePoster.image = movie.poster.image
     }
 }
