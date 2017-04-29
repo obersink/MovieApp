@@ -16,6 +16,10 @@ class Movie {
     private var _year: String
     private var _poster: UIImageView?
     
+    private var _plot: String?
+    private var _directors: String?
+    private var _writers: String?
+    
 //MARK: Getters
     var title: String { return _title }
     var year: String { return _year }
@@ -37,7 +41,7 @@ class Movie {
     //currently unused
     func downloadMovieDetails(imdbID: String, completed: @escaping () -> ()) {
         Alamofire.request("http://www.omdbapi.com/?i=\(imdbID)").responseJSON { response in
-            if let result = response.result.value as? [String:Any] {
+            if let result = response.result.value as? [String: Any] {
         
                 //let title = result["Title"] as! String
                 //let year = result["Year"] as! String
@@ -51,13 +55,13 @@ class Movie {
     }
     
     class func downloadMovieList(searchKey: String, completed: @escaping () -> ()) {
-        
-        DispatchQueue.global().async {
-            var movies = [Movie]()
-            print("request")
-            Alamofire.request("http://www.omdbapi.com/?s=\(searchKey)").responseJSON { response in
-                if let result = response.result.value as? [String:Any] {
-                    if let list = result["Search"] as? [[String:String]] {
+        var movies = [Movie]()
+        print("request")
+        Alamofire.request("http://www.omdbapi.com/?s=\(searchKey)").responseJSON { response in
+            
+            DispatchQueue.global().async {
+                if let result = response.result.value as? [String: Any] {
+                    if let list = result["Search"] as? [[String: String]] {
                         for obj in list {
                             let id = obj["imdbID"]
                             let title = obj["Title"]!
@@ -81,6 +85,7 @@ class Movie {
                         }
                     }
                 }
+
                 DispatchQueue.main.async {
                     completed()
                 }

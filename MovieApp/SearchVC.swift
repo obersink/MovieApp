@@ -27,7 +27,6 @@ class SearchVC: UIViewController {
                     movieDetailVC.movie = movie
                 }
             }
-            
         }
     }
 }
@@ -72,13 +71,10 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(movie)
             return cell
         }
-        else {
-            return UITableViewCell()
-        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "SegueToMovieDetailVC", sender: Movie.movieList[indexPath.row])
     }
-    
 }
