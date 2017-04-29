@@ -35,27 +35,11 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == "" {
-            Movie.clearMovieList()
-            self.movieTableView.reloadData()
-        }
-//        Movie.downloadMovieList(searchKey: searchBar.text!) {
-//            if searchBar.text == nil || searchBar.text == "" {
-//                Movie.clearMovieList()
-//                self.movieTableView.reloadData()
-//            }
-//            
-//            self.movieTableView.reloadData()
-//        }
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        Movie.downloadMovieList(searchKey: searchBar.text!) {
+        Movie.downloadMovieList(searchKey: searchText) {
             self.movieTableView.reloadData()
         }
     }
 }
-
 
 //MARK: TableView
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {

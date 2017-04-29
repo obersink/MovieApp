@@ -7,4 +7,5 @@ target 'MovieApp' do
 
   # Pods for MovieApp
   pod 'Alamofire', '~> 4.4'
+  pod 'AlamofireImage', '~> 3.1'
 end
