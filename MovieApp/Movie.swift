@@ -13,25 +13,19 @@ var request: Alamofire.Request?
 
 class Movie {
     
+//MARK: Properties
     private var _imdbID: String
     private var _title: String
     private var _year: String
     private var _poster: String?
-    
     private var _plot: String?
     private var _directors: String?
     private var _writers: String?
     
-//MARK: Getters
     var imdbID: String { return _imdbID }
     var title: String { return _title }
     var year: String { return _year }
     var poster: String? { return _poster == "N/A" ? nil : _poster }
-    
-//MARK: Movies array and functions
-    private static var _movieList = [Movie]()
-    static var movieList: [Movie] { return _movieList }
-    class func clearMovieList() { _movieList.removeAll() }
     
 //MARK: Constructor
     init(imdbID: String, title: String, year: String, poster: String?) {
@@ -39,6 +33,42 @@ class Movie {
         _title = title
         _year = year
         _poster = poster
+    }
+    
+//MARK: Methods
+    class func downloadMovieList(searchText: String?, completed: @escaping (_ movies: [Movie]) -> ()) {
+        request?.cancel()
+        
+        var movies = [Movie]()
+        
+        guard let searchText = searchText, searchText != "" else {
+            completed(movies)
+            return
+        }
+        
+        request = Alamofire.request("http://www.omdbapi.com/?s=\(searchText.replacingOccurrences(of: " ", with: "%20"))").responseJSON { response in
+            guard response.error == nil else {
+                return
+            }
+            
+            if let result = response.result.value as? [String: Any] {
+                if let list = result["Search"] as? [[String: String]] {
+                    DispatchQueue.global().async {
+                        for obj in list {
+                            guard let imdbID = obj["imdbID"] else { return }
+                            guard let title = obj["Title"] else { return }
+                            guard let year = obj["Year"] else { return }
+                            guard let poster = obj["Poster"] else { return }
+                            
+                            movies.append(Movie(imdbID: imdbID, title: title, year: year, poster: poster))
+                        }
+                        DispatchQueue.main.async {
+                            completed(movies)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     //currently unused
@@ -56,34 +86,4 @@ class Movie {
 //            }
 //        }
 //    }
-    
-    class func downloadMovieList(searchKey: String, completed: @escaping () -> ()) {
-        
-        var movies = [Movie]()
-        
-        request?.cancel()
-        
-        request = Alamofire.request("http://www.omdbapi.com/?s=\(searchKey.replacingOccurrences(of: " ", with: "%20"))").responseJSON { response in
-            
-            DispatchQueue.global().async {
-                if let result = response.result.value as? [String: Any] {
-                    if let list = result["Search"] as? [[String: String]] {
-                        for obj in list {
-                            guard let imdbID = obj["imdbID"] else { return }
-                            guard let title = obj["Title"] else { return }
-                            guard let year = obj["Year"] else { return }
-                            guard let poster = obj["Poster"] else { return }
-                            
-                            movies.append(Movie(imdbID: imdbID, title: title, year: year, poster: poster))
-                            self._movieList = movies
-                        }
-                    }
-                }
-
-                DispatchQueue.main.async {
-                    completed()
-                }
-            }
-        }
-    }
 }
