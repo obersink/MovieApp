@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 var request: Alamofire.Request?
+var request2: Alamofire.Request?
 
 class Movie {
     
@@ -18,6 +19,10 @@ class Movie {
     private var _title: String
     private var _year: String
     private var _poster: String?
+    
+    private var _rated: String?
+    private var _duration: String?
+    private var _genre: String?
     private var _plot: String?
     private var _directors: String?
     private var _writers: String?
@@ -26,6 +31,8 @@ class Movie {
     var title: String { return _title }
     var year: String { return _year }
     var poster: String? { return _poster == "N/A" ? nil : _poster }
+    var rated: String? { return _rated == nil ? nil : _rated }
+    var duration: String? { return _duration == nil ? nil : _duration }
     
 //MARK: Constructor
     init(imdbID: String, title: String, year: String, poster: String?) {
@@ -71,19 +78,31 @@ class Movie {
         }
     }
     
-    //currently unused
-//    func downloadMovieDetails(imdbID: String, completed: @escaping () -> ()) {
-//        Alamofire.request("http://www.omdbapi.com/?i=\(imdbID)").responseJSON { response in
-//            if let result = response.result.value as? [String: Any] {
-//        
-//                //let title = result["Title"] as! String
-//                //let year = result["Year"] as! String
-//                //let poster = result["Poster"] as! String
-//                //let movie = Movie(title: title, year: year)
-//            }
-//            DispatchQueue.main.async {
-//                completed()
-//            }
-//        }
-//    }
+    
+    class func downloadMovieDetails(movie: Movie, completed: @escaping (_ movie: Movie) -> ()) {
+        //var movie: Movie?
+        
+        request2 = Alamofire.request("http://www.omdbapi.com/?i=\(movie.imdbID)").responseJSON { response in
+            if let result = response.result.value as? [String: Any] {
+        
+                //let title = result["Title"] as! String
+                //let year = result["Year"] as! String
+                //let poster = result["Poster"] as! String
+                let rated = result["Rated"] as! String
+                let duration = result["Runtime"] as! String
+                let durInMin = Int(duration.components(separatedBy: " ")[0])!
+                let hours = durInMin / 60
+                let minutes = durInMin % 60
+                print("\(hours) \(minutes)")
+                let genre = result["Genre"] as! String
+                
+                movie._rated = rated
+                movie._duration = "\(hours)h \(minutes)min"
+                
+            }
+            DispatchQueue.main.async {
+                completed(movie)
+            }
+        }
+    }
 }

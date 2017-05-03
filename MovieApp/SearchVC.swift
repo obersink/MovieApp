@@ -27,6 +27,7 @@ class SearchVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToMovieDetailVC", let movieDetailVC = segue.destination as? MovieDetailVC, let movie = sender as? Movie {
+            
             movieDetailVC.movie = movie
         }
     }
@@ -36,9 +37,9 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        Movie.downloadMovieList(searchText: searchText) { (movies) in
-            self.movies = movies
-            self.movieTableView.reloadData()
+        Movie.downloadMovieList(searchText: searchText) { [weak self] (movies) in
+            self?.movies = movies
+            self?.movieTableView.reloadData()
         }
     }
 }

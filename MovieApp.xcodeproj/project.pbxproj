@@ -15,6 +15,7 @@
 		8CC34B291EB3D8D600C4A78B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC34B281EB3D8D600C4A78B /* MovieCell.swift */; };
 		8CC34B2B1EB3D93800C4A78B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC34B2A1EB3D93800C4A78B /* Movie.swift */; };
 		8CC34B2D1EB3F38400C4A78B /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC34B2C1EB3F38400C4A78B /* MovieDetailVC.swift */; };
+		8CC5E3201EB530B00073E5F1 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5E31F1EB530B00073E5F1 /* MovieDetail.swift */; };
 		CD03764BB8839F2521088832 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ECAFE15732E9BD5D727BA1 /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		8CC34B281EB3D8D600C4A78B /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		8CC34B2A1EB3D93800C4A78B /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		8CC34B2C1EB3F38400C4A78B /* MovieDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
+		8CC5E31F1EB530B00073E5F1 /* MovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		DB31B5E2117A951D817A6E46 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,13 +56,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8C9B323B1EB50CB60083DBC1 /* New Group3 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group3";
-			sourceTree = "<group>";
-		};
 		8CC34B061EB3CEE600C4A78B = {
 			isa = PBXGroup;
 			children = (
@@ -82,14 +77,9 @@
 		8CC34B111EB3CEE600C4A78B /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
-				8C9B323B1EB50CB60083DBC1 /* New Group3 */,
-				8CC34B311EB50B8400C4A78B /* New Group2 */,
-				8CC34B301EB50B7D00C4A78B /* New Group1 */,
-				8CC34B2F1EB50B7600C4A78B /* New Group */,
 				8CC34B251EB3CEF600C4A78B /* Model */,
 				8CC34B241EB3CEED00C4A78B /* View */,
 				8CC34B261EB3CF0100C4A78B /* Controller */,
-				8CC34B271EB3CF1C00C4A78B /* Resources */,
 				8CC34B2E1EB5085900C4A78B /* Resources */,
 				8CC34B1B1EB3CEE600C4A78B /* LaunchScreen.storyboard */,
 			);
@@ -101,6 +91,7 @@
 			children = (
 				8CC34B161EB3CEE600C4A78B /* Main.storyboard */,
 				8CC34B281EB3D8D600C4A78B /* MovieCell.swift */,
+				8CC5E31F1EB530B00073E5F1 /* MovieDetail.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -123,49 +114,13 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		8CC34B271EB3CF1C00C4A78B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		8CC34B2E1EB5085900C4A78B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8CC34B321EB50B8700C4A78B /* New Group */,
 				8CC34B191EB3CEE600C4A78B /* Assets.xcassets */,
 				8CC34B1E1EB3CEE600C4A78B /* Info.plist */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		8CC34B2F1EB50B7600C4A78B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
-		8CC34B301EB50B7D00C4A78B /* New Group1 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group1";
-			sourceTree = "<group>";
-		};
-		8CC34B311EB50B8400C4A78B /* New Group2 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group2";
-			sourceTree = "<group>";
-		};
-		8CC34B321EB50B8700C4A78B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		BA4397FB80E7CC051E592452 /* Pods */ = {
@@ -304,6 +259,7 @@
 				8CC34B291EB3D8D600C4A78B /* MovieCell.swift in Sources */,
 				8CC34B2D1EB3F38400C4A78B /* MovieDetailVC.swift in Sources */,
 				8CC34B151EB3CEE600C4A78B /* SearchVC.swift in Sources */,
+				8CC5E3201EB530B00073E5F1 /* MovieDetail.swift in Sources */,
 				8CC34B2B1EB3D93800C4A78B /* Movie.swift in Sources */,
 				8CC34B131EB3CEE600C4A78B /* AppDelegate.swift in Sources */,
 			);
