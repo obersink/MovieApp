@@ -15,6 +15,10 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var ratedLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var plotTextView: UITextView!
+    
+    @IBOutlet weak var moviePoster: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +26,19 @@ class MovieDetailVC: UIViewController {
         ratedLabel.layer.borderWidth = 1.0
         ratedLabel.layer.borderColor = UIColor.darkGray.cgColor
         
-        //var lblInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
-        //ratedLabel.alignmentRectInsets = lblInset
-        //ratedLabel.l
-        
         Movie.downloadMovieDetails(movie: movie) { movie in
             self.movie = movie
             self.titleLabel.text = movie.title
             self.ratedLabel.text = movie.rated
             self.durationLabel.text = movie.duration
+            self.genreLabel.text = movie.genre
+            self.plotTextView.text = movie.plot
+            
+            if let poster = movie.poster, let url = URL(string: poster) {
+                self.moviePoster.af_setImage(withURL: url, placeholderImage: nil, filter: nil, imageTransition: .noTransition)
+            }
+            
         }
-        
         
         
     }

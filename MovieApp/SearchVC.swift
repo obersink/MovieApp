@@ -27,9 +27,9 @@ class SearchVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToMovieDetailVC", let movieDetailVC = segue.destination as? MovieDetailVC, let movie = sender as? Movie {
-            
             movieDetailVC.movie = movie
         }
+        
     }
 }
 

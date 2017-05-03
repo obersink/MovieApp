@@ -33,6 +33,8 @@ class Movie {
     var poster: String? { return _poster == "N/A" ? nil : _poster }
     var rated: String? { return _rated == nil ? nil : _rated }
     var duration: String? { return _duration == nil ? nil : _duration }
+    var genre: String? { return _genre == nil ? nil : _genre }
+    var plot: String? { return _plot == nil ? nil : _plot }
     
 //MARK: Constructor
     init(imdbID: String, title: String, year: String, poster: String?) {
@@ -78,9 +80,7 @@ class Movie {
         }
     }
     
-    
     class func downloadMovieDetails(movie: Movie, completed: @escaping (_ movie: Movie) -> ()) {
-        //var movie: Movie?
         
         request2 = Alamofire.request("http://www.omdbapi.com/?i=\(movie.imdbID)").responseJSON { response in
             if let result = response.result.value as? [String: Any] {
@@ -93,12 +93,14 @@ class Movie {
                 let durInMin = Int(duration.components(separatedBy: " ")[0])!
                 let hours = durInMin / 60
                 let minutes = durInMin % 60
-                print("\(hours) \(minutes)")
+                let plot = result["Plot"] as! String
+    
                 let genre = result["Genre"] as! String
                 
                 movie._rated = rated
                 movie._duration = "\(hours)h \(minutes)min"
-                
+                movie._genre = genre
+                movie._plot = plot
             }
             DispatchQueue.main.async {
                 completed(movie)

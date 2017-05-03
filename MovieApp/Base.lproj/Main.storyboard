@@ -120,14 +120,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1k-Z1-Cml">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBx-RT-mOR">
-                                        <rect key="frame" x="8" y="33" width="30" height="23"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBx-RT-mOR">
+                                        <rect key="frame" x="8" y="30" width="48" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="23" id="M9C-Lg-QEv"/>
-                                            <constraint firstAttribute="width" constant="30" id="siA-IK-78K"/>
+                                            <constraint firstAttribute="height" constant="26" id="M9C-Lg-QEv"/>
+                                            <constraint firstAttribute="width" constant="48" id="siA-IK-78K"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
-                                        <state key="normal" title="Back">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                        <state key="normal" title="〈 Back">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -142,17 +142,6 @@
                                     <constraint firstItem="DBx-RT-mOR" firstAttribute="leading" secondItem="F1k-Z1-Cml" secondAttribute="leading" constant="8" id="vXo-LQ-jcI"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51e-Ab-hvX">
-                                <rect key="frame" x="16" y="164" width="98" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kea-o0-ulC">
-                                <rect key="frame" x="16" y="382" width="77" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7D-hS-k3N" userLabel="TopInfoBar">
                                 <rect key="frame" x="0.0" y="64" width="375" height="90"/>
                                 <subviews>
@@ -166,22 +155,50 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8Lj-rs-ppW">
-                                                <rect key="frame" x="0.0" y="36.5" width="138" height="18"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="150" height="18"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE4-8M-eAl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="18"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE4-8M-eAl" customClass="PaddedLabel" customModule="MovieApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="49.5" height="18"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Rating">
+                                                                <attributes>
+                                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="1" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="2"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h 22min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbV-eL-GdX">
+                                                        <rect key="frame" x="54.5" y="0.0" width="50" height="18"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h 22min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbV-eL-GdX">
-                                                        <rect key="frame" x="50.5" y="0.0" width="50" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXH-wI-4Me">
+                                                        <rect key="frame" x="109.5" y="0.0" width="3" height="18"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyW-hK-ZnE">
-                                                        <rect key="frame" x="105.5" y="0.0" width="32.5" height="18"/>
+                                                        <rect key="frame" x="117.5" y="0.0" width="32.5" height="18"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -203,10 +220,34 @@
                                     <constraint firstAttribute="height" constant="90" id="vT3-qI-ag7"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="wyw-h6-czp">
+                                <rect key="frame" x="8" y="162" width="359" height="165"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="51e-Ab-hvX">
+                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="165"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="51e-Ab-hvX" secondAttribute="height" multiplier="27:40" id="s4y-Ne-a4c"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Krr-ya-rny">
+                                        <rect key="frame" x="117.5" y="0.0" width="241.5" height="165"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="T5E-Of-V3h"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wyw-h6-czp" firstAttribute="leading" secondItem="fsa-3d-rmT" secondAttribute="leading" constant="8" id="7pc-5d-mcq"/>
                             <constraint firstItem="m7D-hS-k3N" firstAttribute="leading" secondItem="fsa-3d-rmT" secondAttribute="leading" id="8vk-2e-mrM"/>
+                            <constraint firstItem="wyw-h6-czp" firstAttribute="top" secondItem="m7D-hS-k3N" secondAttribute="bottom" constant="8" id="9ij-09-sqn"/>
+                            <constraint firstAttribute="trailing" secondItem="wyw-h6-czp" secondAttribute="trailing" constant="8" id="IwC-Z7-Xrj"/>
                             <constraint firstItem="m7D-hS-k3N" firstAttribute="top" secondItem="F1k-Z1-Cml" secondAttribute="bottom" id="LSC-Jx-g5X"/>
                             <constraint firstAttribute="trailing" secondItem="m7D-hS-k3N" secondAttribute="trailing" id="eVX-QD-BdI"/>
                             <constraint firstAttribute="trailing" secondItem="F1k-Z1-Cml" secondAttribute="trailing" id="fi8-rV-Pcw"/>
@@ -216,6 +257,9 @@
                     </view>
                     <connections>
                         <outlet property="durationLabel" destination="IbV-eL-GdX" id="pbx-ip-ana"/>
+                        <outlet property="genreLabel" destination="QyW-hK-ZnE" id="nnL-D4-XQh"/>
+                        <outlet property="moviePoster" destination="51e-Ab-hvX" id="SR4-67-ajy"/>
+                        <outlet property="plotTextView" destination="Krr-ya-rny" id="ieD-W2-aVs"/>
                         <outlet property="ratedLabel" destination="BE4-8M-eAl" id="FTw-zM-Qxo"/>
                         <outlet property="titleLabel" destination="bK5-Uv-cC3" id="0rS-rr-t9t"/>
                     </connections>
