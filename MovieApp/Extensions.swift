@@ -29,3 +29,50 @@ import UIKit
         }
     }
 }
+
+@IBDesignable extension UIView {
+    
+    
+    @IBInspectable var borderColor: UIColor? {
+        set {
+            layer.borderColor = newValue!.cgColor
+        }
+        get {
+            if let color = layer.borderColor {
+                return UIColor(cgColor: color)
+            }
+            else {
+                return nil
+            }
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
+    }
+}
+
+//@IBDesignable class BorderedView: UIView {
+//    
+//    @IBInspectable var borderWidth: CGFloat = 0
+//    
+//    override func draw(_ layer: CALayer, in ctx: CGContext) {
+//        <#code#>
+//    }
+//    
+//    override var layer: CALayer {
+//        get {
+//            
+//            
+//            var clayer = super.layer
+//            clayer.borderColor = UIColor.darkGray.cgColor
+//            clayer.borderWidth = borderWidth
+//            return clayer
+//        }
+//    }
+//}
